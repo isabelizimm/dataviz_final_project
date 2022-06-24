@@ -1,8 +1,8 @@
 # Data Visualization and Reproducible Research
 
-> Firstname Lastname. 
+> Isabel Zimmerman. 
 
-Learn more about me in my [GitHub profile page](https://github.com/reiminer)
+Learn more about me in my [GitHub profile page](https://github.com/isabelizimm)
 
 
 The following is a sample of products created during the _"Data Visualization and Reproducible Research"_ course.
@@ -14,7 +14,7 @@ The [Bechdel Test](https://en.wikipedia.org/wiki/Bechdel_test) is a famous test 
 
 **Sample data visualization:** 
 
-
+![](figures/bechdel.png)
 
 
 ## Project 02
@@ -23,22 +23,18 @@ This project was made to discover interactive plots, spatial visualizations, and
 
 **Sample data visualization:** 
 
-_[include your favorite visualization from this project here]_
-<img src="https://github.com/reisanar/dataviz_final_project/blob/main/figures/fl_higher_ed.png" width="60%" height="60%">
-
-(you can also place your figures in the `figures/` folder and use the `![](path_to_picture)` option to add the pictures here)
+![](figures/bears.png)
 
 
 ## Project 03
 
-In this project, I explored ... _[short description of your revised project goes here]_
+In this project, I practiced remaking graphics! More than anything, this forced me to think about each element in ggplot individually, and how they work together.
 
 **Sample data visualization:** 
 
-_[include your favorite visualization from this project here]_
-<img src="https://github.com/reisanar/figs/raw/master/jackie_jessie_marion.png" width="80%" height="80%">
+![](figures/remake.png)
 
 
 ### Moving Forward
 
-_add here a short reflection on what you learned and what you plan to continue exploring in terms of data visualization, data storytelling, reproducible research, and/or related topics_
+I certainly have so much more appreciation for the art of making visualizations. It is so hard to get a message across clearly! The grammar of graphics offers a great way to be able to make graphs quickly and effectively. This course has me really interested in generative art, since I now am realizing how crazy it is that it is even possible to create.
