@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?><metadata>
+    <idinfo>
+        <citation>
+            <citeinfo>
+                <title>Florida Black Bear Captures (1981 – 2020)</title>
+                <geoform>vector digital data</geoform>
+                <onlink>https://gis.myfwc.com/Data/KMZ_files/Wildlife - Black Bear Capture Locations - FL.kmz</onlink>
+            </citeinfo>
+        </citation>
+        <descript>
+            <abstract>This shapefile contains the locations of black bear (Ursus americanus floridanus)captures in the state of Florida, where the end result of the capture activity did not result in the death of the animal (i.e. bear released on-site or relocated, or a cub taken into temporary holding for later release into the wild). The data were limited to those records obtained from the Wildlife Incident Management System (WIMS) database maintained by the Florida Fish and Wildlife Conservation Commission (FWC), and that were associated with a geographic coordinate.</abstract>
+            <purpose>These data are available for all people interested in black bear capture locations in the state of Florida.</purpose>
+        </descript>
+        <spdom>
+            <bounding>
+                <westbc>-87.4664</westbc>
+                <eastbc>-80.253319</eastbc>
+                <northbc>30.981645</northbc>
+                <southbc>25.575021</southbc>
+            </bounding>
+        </spdom>
+        <keywords>
+            <theme>
+                <themekt>None</themekt>
+                <themekey>nuisance</themekey>
+                <themekey>GIS</themekey>
+                <themekey>Florida</themekey>
+                <themekey>wildlife</themekey>
+                <themekey>biology</themekey>
+                <themekey>mapping</themekey>
+                <themekey>uplands</themekey>
+                <themekey>statewide</themekey>
+                <themekey>bear</themekey>
+                <themekey>Ursus</themekey>
+                <themekey>capture</themekey>
+                <themekey>report</themekey>
+                <themekey>biota</themekey>
+                <themekey>research</themekey>
+            </theme>
+        </keywords>
+        <accconst>Other Constraints</accconst>
+        <useconst>Acknowledgement of the FWC-HSC (Florida Fish and Wildlife Conservation Commission-Habitat and Species Conservation Division) as the data source would be appreciated in any products developed from these data, and such acknowledgment as is standard for citation and legal practices for data source is expected by users of this data. Please cite the original metadata when using portions of the record to create a similar record of slightly altered data, such as reprojection. If any data are modified or adjusted, please share the edited information with FWC. Users should be aware that comparison with other data sets for the same area from other time periods may be inaccurate due to inconsistencies resulting from changes in mapping conventions, data collection, and computer processes over time. FWC shall not be liable for improper or incorrect use of this data. These data are not legal documents and are not to be used as such. This is not a survey data set and should not be utilized as such. These data are not to be used for navigation.</useconst>
+        <datacred>Jenny Gottsch (FWC Bear Management Program)</datacred>
+        <native>Esri ArcGIS 10.3.1.4959</native>
+    </idinfo>
+    <spdoinfo>
+        <direct>Vector</direct>
+    </spdoinfo>
+    <eainfo>
+        <detailed>
+            <enttyp>
+                <enttypl>Bear_Captures_1981_2019</enttypl>
+                <enttypd>These data are available for all people interested in the location of black bear captures in the state of Florida.</enttypd>
+                <enttypds>FWC Bear Management Program</enttypds>
+            </enttyp>
+            <attr>
+                <attrlabl>FID</attrlabl>
+                <attrdef>Internal feature number.</attrdef>
+                <attrdefs>Esri</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Sequential unique whole numbers that are automatically generated.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>Shape</attrlabl>
+                <attrdef>Feature geometry.</attrdef>
+                <attrdefs>ESRI</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Coordinates defining the features.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>BearID</attrlabl>
+                <attrdef>Bear record unique identification number</attrdef>
+                <attrdomv>
+                                        					
+                    
+                    <udom>String</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>ReportDate</attrlabl>
+                <attrdef>Date of report (MM/DD/YYYY)</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>String</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>CapDate</attrlabl>
+                <attrdef>Date of capture (MM/DD/YYYY)</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>String</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>Region</attrlabl>
+                <attrdef>FWC region where capture took place</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>BMU</attrlabl>
+                <attrdef>FWC Bear Management Unit where capture took place</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>County</attrlabl>
+                <attrdef>County where capture took place</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>Locale</attrlabl>
+                <attrdef>Community/Subdivision in which report was placed</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>City</attrlabl>
+                <attrdef>City in which report was placed</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>ZipCode</attrlabl>
+                <attrdef>Zip code in which report was placed</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Whole numbers</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>Location</attrlabl>
+                <attrdef>Specific location of capture</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>Latitude</attrlabl>
+                <attrdef>Capture latitude in decimal degrees</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Decimal Degrees</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>Longitude</attrlabl>
+                <attrdef>Capture longitude in decimal degrees</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Decimal Degrees</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>CapReason</attrlabl>
+                <attrdef>Reason for capture</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>OCapReason</attrlabl>
+                <attrdef>Reason for capture if CapReason is OTHER</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>NCapReason</attrlabl>
+                <attrdef>Reason for capture if CapReason is Nuisance</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>CapMethod</attrlabl>
+                <attrdef>Capture methodology</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>OrigCap</attrlabl>
+                <attrdef>First time capturing this bear</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>FinAction</attrlabl>
+                <attrdef>Final action taken</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>OFinAction</attrlabl>
+                <attrdef>Final action taken if FinAction is OTHER</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>Sex</attrlabl>
+                <attrdef>Sex of bear</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>AgeClass</attrlabl>
+                <attrdef>Age classification of bear</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Double</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>Weight</attrlabl>
+                <attrdef>Weight of bear in pounds</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Number field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>Age</attrlabl>
+                <attrdef>Estimated age of bear by tooth cross section, estimation, or calculation</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Number field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>Cubs</attrlabl>
+                <attrdef>Numbers of cubs observed with bear</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Whole number</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>Yearlings</attrlabl>
+                <attrdef>Numbers of yearlings observed with bear</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Whole number</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>LEarTag1</attrlabl>
+                <attrdef>Left ear tag 1 ID number</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>LEarTag2</attrlabl>
+                <attrdef>Left ear tag 2 ID number</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>REarTag1</attrlabl>
+                <attrdef>Right ear tag 1 ID number</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>REarTag2</attrlabl>
+                <attrdef>Right ear tag 2 ID number</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>Tattoo1</attrlabl>
+                <attrdef>Tattoo 1 ID number</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>Tattoo2</attrlabl>
+                <attrdef>Tattoo 2 ID number</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text field</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>TrackNum</attrlabl>
+                <attrdef>Tracking numbers which refer to non-spatial bear database</attrdef>
+                <attrdefs>FWC</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Whole numbers</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+        </detailed>
+    </eainfo>
+    <metainfo>
+        <metd>20200225</metd>
+        <metc>
+            <cntinfo>
+                <!--no contact person or organization name available-->
+            </cntinfo>
+        </metc>
+        <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+        <metstdv>FGDC-STD-001-1998</metstdv>
+        <mettc>local time</mettc>
+    </metainfo>
+</metadata>

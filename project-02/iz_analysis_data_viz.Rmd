@@ -1,0 +1,134 @@
+---
+title: "Data Visualization - Mini-Project 2"
+author: "Isabel Zimmerman `izimmerman5298@floridapoly.edu`"
+output: 
+  html_document:
+    keep_md: true
+    toc: true
+    toc_float: true
+---
+
+# Nuisance captures of black bears in Florida
+
+While Florida may be well known for the rambunctious activities of alligators, I chose to better understand the types of bears being captured for nuisance reasons. Nuisance bears are not injured or captured for research. They are simply running around and causing trouble, as bears sometimes do. There could be a great story from this data: an exploration of different bears, highlighting a juvenile bear being relocated from rummaging through trash, or looking into what kind of bears are recaptures. I really love that this data included the whole "bear capture timeline" from capture date, capture method, and capture reason, to its final action, whether that be rehab, release, or other.  
+
+```{r, include=FALSE, echo=FALSE}
+library(sf)
+library(ggplot2)
+library(tidyverse)
+library(tidymodels)
+library(plotly)
+```
+
+```{r}
+raw <- read_sf("../data/blackbears/FL_Black_Bear_Capture_Locations.shp")
+raw
+```
+
+```{r}
+fl <- map_data("state", "florida")
+
+ncap <- raw %>% 
+  drop_na(NCapReason)
+```
+
+
+```{r}
+nbears_plot <- ggplot() +
+  geom_polygon(fl, mapping = aes(long, lat), fill = NA, colour = "grey60") +
+  geom_sf(st_as_sf(ncap), mapping = aes(color = NCapReason), size = 1.7, alpha = 0.5) +
+  theme_classic() +
+  labs(
+    x = "",
+    y = "",
+    title = "Capture of nuisance black bears in Florida",
+    caption = "Source: Florida Geospatial Open Data Portal",
+    color = "Reasons for capture")
+nbears_plot
+```
+The shapefile gave us GIS data to locate where each bear was being captured, with colors to highlight the kind of capture occurring. I chose to show only the outline of Florida for the cleanest possible look. However, another iteration may include a light outline of counties to help contextualize capture location, while not getting in the way of readability. I find this visualization sparks me no joy, so I decided to reuse many core elements, make it interactive, and give more context to liven it up a little.
+
+```{r, warning=FALSE}
+nbears_more_info <- ggplot() +
+  geom_polygon(fl, mapping = aes(long, lat), fill = NA, colour = "grey60") +
+  geom_sf(st_as_sf(ncap), mapping = aes(color = NCapReason, text = paste("Method:", CapMethod, "\nAge:", AgeClass)), size = 1.7, alpha = 0.5) +
+  theme_classic() +
+  labs(
+    x = "",
+    y = "",
+    title = "Capture of nuisance black bears in Florida",
+    color = "Reasons for capture")
+
+interact <- ggplotly(nbears_more_info)
+interact
+```
+
+```{r}
+htmlwidgets::saveWidget(interact, "nuisance_bears.html")
+```
+
+Interactive plots are so powerful. Hovering over each data point gives us a story of a bear: the reason for capture, the method of capture, and the age of the bear. This plot also allows us to show/hide each category of nuisance capture, and hone in what we find as important. This interactivity also gives us some feature knowledge that would be otherwise difficult to glean; for example, two categories are very similar-- "Attacked Animal" and "Threatened Animal." From the visualization, we can easily see that these two categories are rare, and it might be useful to group them for modeling purposes. 
+One thing I found pretty annoying was the fact that `ggplotly()` drops my caption AND subtitle lab! I ended up removing them altogether since they did not render.
+
+```{r}
+set.seed(1223)
+model_data <- raw %>% 
+  select(Age, Weight, NCapReason, BMU) %>% 
+  mutate_at(vars(NCapReason, BMU), factor)
+
+bear_split <- initial_split(model_data, prop = 0.85)
+train <- training(bear_split)
+test <- testing(bear_split)
+```
+
+```{r}
+bear_model <-
+  workflow(Age ~ Weight + NCapReason + BMU, linear_reg()) %>%
+  step_indicate_na(Weight, NCapReason, BMU) %>%
+  fit(train)
+
+tidy(bear_model)
+```
+
+For this model, I used a linear model to find out the relationship bewtween the age of captured bears and their weight, nuisance capture reason, and location.
+
+```{r, warning = FALSE}
+pred <- predict(bear_model, new_data = test)
+conf_int_pred <- predict(bear_model, new_data = test, type = "conf_int")
+
+test %>% 
+  bind_cols(pred) %>% 
+  bind_cols(conf_int_pred) %>%
+  ggplot(aes(x = NCapReason)) +
+  geom_errorbar(aes(ymin = 0, 
+                    ymax = .pred_upper),
+                alpha = 0.5,
+                width = .2) +
+  geom_point(aes(y = .pred)) +
+  theme_minimal() +
+  labs(
+    x = "Nuisance capture reason",
+    y = "Predicted age"
+  )
+```
+
+This plot is horribly ugly, but it's being presented because I found it entertaining that (using some hand-wavy over generalization), young bears are found in the garbage or damaging property, where older bears are found in apiaries (where bees are kept). _Those teenage bears are out there getting into trouble while the older bears have finer taste._ This plot is also useful since it shows our model can predict a negative age. This is due to model choice, since linear models have no understanding of zero as an absolute minimum. It might be useful to look into a different model that is a better fit for the outcome variable.
+
+```{r, warning=FALSE}
+bear_coefs <- tidy(bear_model, conf.int = TRUE) %>% 
+  filter(term != "(Intercept)")
+
+ggplot(bear_coefs, aes(x = estimate,
+                       y = fct_rev(term))) +
+  geom_pointrange(aes(xmin = conf.low, 
+                      xmax = conf.high)) +
+  geom_vline(xintercept = 0) + 
+  theme_minimal() +
+  labs (
+    title = "Coefficient plot",
+    subtitle =  "Linear model for estimating nuisance bear age",
+    y = ""
+  )
+```
+
+The strongest positive effects here are from location (particularly the South Central or East Panhandle area) and being in the apiary (again, I really do love that for them). The strongest negative effects are from threatening an animal or killing an animal. However, these coefficients are a great place to begin exploration. One coefficient that was surprising was that weight had no effect on age of bear. This seems wrong, since bears certainly get heavier as they age, at least between ages 0-1. To be clear, these are the effects that these coefficients had on a linear model and not a holistic view on the age distribution of nuisance bears. 
