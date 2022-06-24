@@ -10,17 +10,17 @@ output:
 
 The [Bechdel Test](https://en.wikipedia.org/wiki/Bechdel_test) is a famous test for content to see if there are at least two characters who are women, that talk to each other, and the conversation is on a topic other a male character. While the bar for this criteria truly seems to be on the floor, a vast amount of movies still do not pass the test. Let's discover more with a dataset offered by [Tidy Tuesday](https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-03-09).
 
-```{r}
+```{r, message=FALSE}
 library(tidyverse)
 ```
 
-```{r}
+```{r, message=FALSE}
 raw <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-03-09/movies.csv")
 ```
 
 ## Are we better at writing movies that pass the Bechdel test now?
 
-```{r}
+```{r, message=FALSE}
 raw %>% 
   select(year, binary) %>% 
   count(year, binary) %>%
@@ -34,7 +34,7 @@ raw %>%
 ```
 This visualization seeks to show if modern movies are passing the Bechdel test more than in the past. Realistically, the biggest takeaway I get here is that there are a lot more movies in this dataset after the year 2000. It is hard to intuitively understand the relationship between passing and failing movies. Instead, let's translate these into percentages per year of passing/failing.
 
-```{r}
+```{r, message=FALSE}
 total_movies_year <- raw %>%
   select(year) %>% 
   count(year) %>% 
@@ -50,7 +50,7 @@ pass_per_year <- raw %>%
 by_year <- left_join(total_movies_year, pass_per_year) 
 ```
 
-```{r}
+```{r, message=FALSE}
 by_year %>% 
   select(-binary) %>% 
   replace(is.na(.), 0) %>% 
@@ -67,10 +67,10 @@ by_year %>%
   theme_minimal() +
   coord_cartesian(ylim = c(0,1)) +
   scale_y_continuous(labels = scales::percent) +
-  labs(x = "Year", y = "Films passing Bechdel test",
+  labs(x = "Year", y = "Percent passing",
        title = "We haven't gotten much *that* better at the Bechdel test",
        subtitle = "Percent of films passing Bechdel test, per year",
-       size = "Total number of movies released",
+       size = "Number of movies released",
        caption = "Source: Tidy Tuesday")
   
 ```
@@ -88,8 +88,9 @@ raw %>%
   geom_violin() +
   scale_y_continuous(labels = scales::dollar) +
   theme_minimal() +
-  labs(x = "Test result", title = "Profit for Bechdel passing/non-passing films",
-       y = "International gross profit",
+  labs(x = " ", title = "Profit for Bechdel passing/non-passing films",
+       subtitle = "Based off international gross profit",
+       y = "Profit",
        size = "Total number of movies released",
        caption = "Source: Tidy Tuesday")
 ```
@@ -107,7 +108,8 @@ raw %>%
   ggplot(mapping = aes(x=rated)) +
   scale_y_continuous(labels = scales::percent) +
   geom_bar(mapping = aes(fill = binary), stat="count", position = "fill") +
-  theme_minimal() +  labs(x = "Rating", y = "Percentage of films",
+  theme_minimal() +  
+  labs(x = "Rating", y = " ",
        fill = "Results of Bechdel test",
        title = "Results of Bechdel test, per rating",
        caption = "Source: Tidy Tuesday")

@@ -15,38 +15,9 @@ The [Bechdel Test](https://en.wikipedia.org/wiki/Bechdel_test) is a famous test 
 library(tidyverse)
 ```
 
-```
-## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
-```
-
-```
-## ✔ ggplot2 3.3.5     ✔ purrr   0.3.4
-## ✔ tibble  3.1.7     ✔ dplyr   1.0.9
-## ✔ tidyr   1.2.0     ✔ stringr 1.4.0
-## ✔ readr   2.1.2     ✔ forcats 0.5.1
-```
-
-```
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-```
-
 
 ```r
 raw <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-03-09/movies.csv")
-```
-
-```
-## Rows: 1794 Columns: 34
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ","
-## chr (24): imdb, title, test, clean_test, binary, domgross, intgross, code, d...
-## dbl  (7): year, budget, budget_2013, period_code, decade_code, metascore, im...
-## lgl  (2): response, error
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
 ## Are we better at writing movies that pass the Bechdel test now?
@@ -85,10 +56,6 @@ pass_per_year <- raw %>%
 by_year <- left_join(total_movies_year, pass_per_year) 
 ```
 
-```
-## Joining, by = "year"
-```
-
 
 ```r
 by_year %>% 
@@ -107,15 +74,11 @@ by_year %>%
   theme_minimal() +
   coord_cartesian(ylim = c(0,1)) +
   scale_y_continuous(labels = scales::percent) +
-  labs(x = "Year", y = "Films passing Bechdel test",
+  labs(x = "Year", y = "Percent passing",
        title = "We haven't gotten much *that* better at the Bechdel test",
        subtitle = "Percent of films passing Bechdel test, per year",
-       size = "Total number of movies released",
+       size = "Number of movies released",
        caption = "Source: Tidy Tuesday")
-```
-
-```
-## `geom_smooth()` using formula 'y ~ x'
 ```
 
 ![](iz_analysis_data_viz_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
@@ -134,8 +97,9 @@ raw %>%
   geom_violin() +
   scale_y_continuous(labels = scales::dollar) +
   theme_minimal() +
-  labs(x = "Test result", title = "Profit for Bechdel passing/non-passing films",
-       y = "International gross profit",
+  labs(x = " ", title = "Profit for Bechdel passing/non-passing films",
+       subtitle = "Based off international gross profit",
+       y = "Profit",
        size = "Total number of movies released",
        caption = "Source: Tidy Tuesday")
 ```
@@ -156,7 +120,8 @@ raw %>%
   ggplot(mapping = aes(x=rated)) +
   scale_y_continuous(labels = scales::percent) +
   geom_bar(mapping = aes(fill = binary), stat="count", position = "fill") +
-  theme_minimal() +  labs(x = "Rating", y = "Percentage of films",
+  theme_minimal() +  
+  labs(x = "Rating", y = " ",
        fill = "Results of Bechdel test",
        title = "Results of Bechdel test, per rating",
        caption = "Source: Tidy Tuesday")
